@@ -24,6 +24,10 @@ routes.post(
     postContoller.editPost
 );
 
-routes.get("/deletePost", postContoller.deletePost);
+routes.get(
+    "/deletePost",
+    Passport.authenticate("userVerify", { failureRedirect: "/failLogin" }),
+    postContoller.deletePost
+);
 
 module.exports = routes;
